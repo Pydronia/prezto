@@ -8,9 +8,16 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 
 # pyenv setup
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+eval "$(pyenv init -)"
+
+pyenv-brew-relink() {
+  ln -s $(brew --cellar python)/* ~/.pyenv/versions/
+}
+
+# nvm setup
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # venv activate alias
 alias activate='source .venv/bin/activate'
