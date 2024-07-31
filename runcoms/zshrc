@@ -16,23 +16,24 @@ fi
 function push-config {
 (
 	if [ -z "$1" ]; then
-		echo "Usage: push-config <commit-message>"
+		printf "Usage: push-config <commit-message>\n"
 		return 1
 	fi
 	cd $ZDOTDIR/.zprezto
 	if [[ ! `git status --porcelain` ]]; then
-		echo "No Prezto changes"
+		printf "No Prezto changes\n"
 	else
-		echo "Committing and pushing Prezto changes"
+		printf "Committing and pushing Prezto changes...\n"
 		git add -A
 		git commit -m "$1"
 		git push
+		printf "\n"
 	fi
 	cd ~/.config
 	if [[ ! `git status --porcelain` ]]; then
-		echo "No other config changes"
+		printf "No other config changes\n"
 	else
-		echo "Committing and pushing config changes"
+		printf "Committing and pushing config changes...\n"
 		git add -A
 		git commit -m "$1"
 		git push
