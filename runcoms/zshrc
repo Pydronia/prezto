@@ -13,6 +13,8 @@ fi
 ## Convenience Functions
 
 # Push any configuration changes to dotfiles repo
+# TODO:
+# - Check remote for conflicts
 function push-config {
 (
 	if [ -z "$1" ]; then
@@ -40,3 +42,29 @@ function push-config {
 	fi
 )
 }
+
+# Fetch upstream updates from Prezto
+function zprezto-upstream-pull {
+(
+	cd $ZDOTDIR/.zprezto
+	printf "Fetching from upstream...\n"
+	git fetch upstream
+	commit_diff=$(git rev-list --count HEAD..upstream/master)
+	if [ "$commit_diff" -gt 0 ]; then
+		printf "Update found. Now merging...\n"
+		git merge --no-edit upstream/master
+		if [ $? -eq 0 ]; then
+			printf "Updating submodules...\n"
+			git submodule sync --recursive
+			git submodule update --recursive --init
+			return $?
+		else
+			printf "Error merging. Please resolve manually.\n"
+			return 1
+		fi
+	else
+		printf "No updates found.\n"
+	fi
+)
+}
+
