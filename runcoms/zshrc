@@ -12,3 +12,30 @@ fi
 
 ## Convenience Functions
 
+# Push any configuration changes to dotfiles repo
+function push-config {
+(
+	if [ -z "$1" ]; then
+		echo "Usage: push-config <commit-message>"
+		return 1
+	fi
+	cd $ZDOTDIR/.zprezto
+	if [[ ! `git status --porcelain` ]]; then
+		echo "No Prezto changes"
+	else
+		echo "Committing and pushing Prezto changes"
+		git add -A
+		git commit -m "$1"
+		git push
+	fi
+	cd ~/.config
+	if [[ ! `git status --porcelain` ]]; then
+		echo "No other config changes"
+	else
+		echo "Committing and pushing config changes"
+		git add -A
+		git commit -m "$1"
+		git push
+	fi
+)
+}
