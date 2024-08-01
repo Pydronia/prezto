@@ -10,8 +10,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-## Convenience Functions
+# Pure Prompt settings
+zstyle ":prompt:pure:prompt:success" color "cyan"
 
+## Convenience Functions
 # Push any configuration changes to dotfiles repo
 # TODO:
 # - Check remote for conflicts
