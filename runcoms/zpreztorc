@@ -245,7 +245,7 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
-# zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
+# zstyle ':prezto:module:tmux:session' name $(hostname -s)
 
 #
 # Utility
