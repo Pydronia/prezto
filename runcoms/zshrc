@@ -10,8 +10,19 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+## Zsh options
+# dotfile completions
+_comp_options+=(globdots)
+# disable completion beeps
+unsetopt LIST_BEEP
+
 # Activate Mise
 eval "$(mise activate zsh)"
+
+## Aliases
+# tmux
+alias tm="tmux"
+alias tms="tmux new-session -A -s $(hostname -s)"
 
 ## Convenience Functions
 # Push any configuration changes to dotfiles repo
