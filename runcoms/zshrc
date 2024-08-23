@@ -10,12 +10,16 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+## Prompt customisation
+RPROMPT="%(?..%F{red}%?%f )%F{#586e74}%*%f"
+
 ## Zsh options
 # dotfile completions
 _comp_options+=(globdots)
 # disable completion beeps
 unsetopt LIST_BEEP
 
+## Misc Setup
 # Activate Mise
 eval "$(mise activate zsh)"
 
@@ -28,10 +32,10 @@ alias tms="tmux new-session -A -s $(hostname -s)"
 # Push any configuration changes to dotfiles repo
 # TODO:
 # - Check remote for conflicts
-function push-config {
+function config-push {
 (
 	if [ -z "$1" ]; then
-		printf "Usage: push-config <commit-message>\n"
+		printf "Usage: config-push <commit-message>\n"
 		return 1
 	fi
 	cd $ZDOTDIR/.zprezto
