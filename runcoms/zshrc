@@ -23,6 +23,10 @@ unsetopt LIST_BEEP
 # Activate Mise
 eval "$(mise activate zsh)"
 
+# Setup fzf
+source <(fzf --zsh)
+
+
 ## Aliases
 # tmux
 alias tm="tmux"
