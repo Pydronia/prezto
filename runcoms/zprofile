@@ -56,6 +56,11 @@ path=(
 	$path
 )
 
+fpath=(
+	$HOME/.local/share/zsh/completions
+	$fpath
+)
+
 # path=(
 #   $HOME/{,s}bin(N)
 #   /opt/{homebrew,local}/{,s}bin(N)
