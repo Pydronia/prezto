@@ -20,6 +20,9 @@ _comp_options+=(globdots)
 unsetopt LIST_BEEP
 
 ## Misc Setup
+# Setup direnv
+eval "$(direnv hook zsh)"
+
 # Activate Mise
 eval "$(mise activate zsh)"
 
