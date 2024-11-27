@@ -51,6 +51,7 @@ typeset -gU cdpath fpath mailpath path
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Add local binaries, completions
 path=(
 	$HOME/.local/bin
 	$path
